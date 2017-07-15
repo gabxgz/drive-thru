@@ -6,14 +6,18 @@
   "author": "GeorgeGabe <gabegonzalez24@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "test": "jest"
   },
   "dependencies": {
+    "babel-jest": "^20.0.3",
     "html-webpack-plugin": "^2.29.0",
+    "jest": "^20.0.4",
     "path": "^0.12.7",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
+    "react-test-renderer": "^15.6.1",
     "webpack": "^3.2.0",
     "webpack-dev-server": "^2.5.1"
   },
