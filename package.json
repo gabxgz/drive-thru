@@ -1,0 +1,13 @@
+{
+  "name": "drive-thru",
+  "version": "1.0.0",
+  "description": "Test App",
+  "main": "index.js",
+  "author": "GeorgeGabe <gabegonzalez24@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "path": "^0.12.7",
+    "webpack": "^3.2.0",
+    "webpack-dev-server": "^2.5.1"
+  }
+}
