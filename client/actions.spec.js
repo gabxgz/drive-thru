@@ -23,4 +23,16 @@ describe('actions', () => {
       expect(actions.manageOrders()).toEqual(expectedAction);
     });
   });
+
+  describe('#createOrder', () => {
+    it('returns action to edit order', () => {
+      const id = 234
+      const expectedAction = {
+        type: actionTypes.CREATE_ORDER,
+        id,
+      };
+
+      expect(actions.createOrder(id)).toEqual(expectedAction);
+    });
+  });
 });

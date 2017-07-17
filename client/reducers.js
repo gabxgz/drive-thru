@@ -11,6 +11,14 @@ export function orders (state = [], action) {
           editing: !order.editing,
         });
       });
+    case actionTypes.CREATE_ORDER:
+      return state.concat([{
+        items: [],
+        id: action.id,
+        paid: false,
+        completed: false,
+        editing: false,
+      }])
     default:
       return state;
   }
@@ -36,9 +44,19 @@ export function activeView (state = '', action) {
   }
 }
 
+export function nextOrder (state=1, action) {
+  switch (action.type) {
+    case actionTypes.CREATE_ORDER:
+      return state + 1;
+    default:
+      return state;
+  }
+}
+
 const reducers = combineReducers({
   orders,
   activeView,
+  nextOrder,
 });
 
 export default reducers;

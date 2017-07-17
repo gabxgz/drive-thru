@@ -11,6 +11,7 @@ li {
   font-size: 2em;
   padding: 10px;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 li:hover {
@@ -34,4 +35,11 @@ a:hover {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+li button {
+  font-size: 1rem;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
 }

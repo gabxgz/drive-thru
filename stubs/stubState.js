@@ -1,8 +1,9 @@
 const stubState = {
-  "activeView": {
+  activeView: {
     "viewName": "ORDER_MANAGER",
     "id": null
   },
+  nextOrder: 4,
   orders:[
     {
       name:'item 1',

@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import App from './app.jsx';
-import Orders from '../orders/orders.jsx';
+import OrdersContainer from '../orders/ordersContainer.jsx';
 import OrderEditor from '../orderEditor/orderEditor.jsx';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -32,11 +32,11 @@ describe('<App />', () => {
     });
 
     describe('/', () => {
-      it('points exactly to Orders', () => {
+      it('points exactly to OrdersContainer', () => {
         expect(routes.nodes[0].props).toEqual({
           path: '/',
           exact: true,
-          component: Orders
+          component: OrdersContainer
         });
       });
     });

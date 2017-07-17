@@ -1,0 +1,17 @@
+button {
+  background-color: #157a9e;
+  color: #FFF;
+  font-weight: bold;
+  border: none;
+  height: 40px;
+  min-width: 300px;
+  margin: 0 auto;
+  display: block;
+  font-size: 2rem;
+  line-height: 1em;
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.1);
+}
+button:hover {
+  transform: scale(1.01);
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.2);
+}

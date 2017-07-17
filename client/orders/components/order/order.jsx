@@ -31,8 +31,8 @@ class Order extends React.Component {
       <li onClick={this.props.onClick}>
         <Link to={url}>
           <div className={styles.order}>{this.props.index}. {this.orderToString()}</div>
-          <Button text="Accept Payment"/>
         </Link>
+        <Button text="Accept Payment" />
       </li>
     );
   }
