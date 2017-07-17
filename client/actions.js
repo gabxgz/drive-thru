@@ -1,5 +1,4 @@
 // Action Types
-// export const TOGGLE_EDIT_ORDER = 'TOGGLE_EDIT_ORDER';
 export const MANAGE_ORDERS = 'MANAGE_ORDERS';
 export const EDIT_ORDER = 'EDIT_ORDER';
 

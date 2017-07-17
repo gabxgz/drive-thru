@@ -17,7 +17,6 @@ function orders (state = [], action) {
 }
 
 function activeView (state = '', action) {
-  console.log(action)
   switch (action.type) {
     case EDIT_ORDER:
       return {
