@@ -1,5 +1,5 @@
 import React from 'react';
-import Order from './order.jsx';
+import Order from './order/order.jsx';
 import PropTypes from 'prop-types';
 
 class OrderList extends React.Component {

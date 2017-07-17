@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EditOrderButton from './editOrderButton.jsx';
-import CompleteOrderButton from './completeOrderButton.jsx';
+import Button from '../../../button/button.jsx';
 import { Link } from 'react-router-dom';
+import styles from './order.css'
 
 class Order extends React.Component {
   orderToString () {
@@ -30,10 +30,9 @@ class Order extends React.Component {
     return (
       <li onClick={this.props.onClick}>
         <Link to={url}>
-          <div>{this.props.index}. {this.orderToString()}</div>
+          <div className={styles.order}>{this.props.index}. {this.orderToString()}</div>
+          <Button text="Accept Payment"/>
         </Link>
-        <EditOrderButton />
-        <CompleteOrderButton />
       </li>
     );
   }

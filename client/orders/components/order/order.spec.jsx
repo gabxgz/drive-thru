@@ -2,9 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { shallow, render } from 'enzyme';
 import Order from './order.jsx';
-import EditOrderButton from './editOrderButton.jsx';
-import CompleteOrderButton from './completeOrderButton.jsx';
-import stubState from '../../../stubs/stubState.js';
+import Button from '../../../button/button.jsx';
+import stubState from '../../../../stubs/stubState.js';
 
 describe('<Order />', () => {
   let wrapper;
@@ -32,11 +31,9 @@ describe('<Order />', () => {
     expect(wrapper.html()).toContain("1. Burger, Drink, Side");
   });
 
-  it('renders a EditOrderButton', () => {
-    expect(shallowWrapper.find(EditOrderButton).length).toEqual(1);
-  });
-
-  it('renders a CompleteOrderButton', () => {
-    expect(shallowWrapper.find(CompleteOrderButton).length).toEqual(1);
+  it('renders an Accept Payment Button', () => {
+    const button = shallowWrapper.find(Button);
+    expect(button.length).toEqual(1);
+    expect(button.nodes[0].props.text).toEqual('Accept Payment');
   });
 });

@@ -1,3 +1,10 @@
+body {
+  background-color: #dcf2fa;
+  font-family: 'Roboto', sans-serif;
+}
+
 h1 {
-  color: blue;
+  color: #157a9e;
+  text-align: center;
+  font-family: 'Patua One', serif;
 }

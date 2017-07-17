@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import OrderList from './orderList.jsx';
-import Order from './order.jsx';
+import Order from './order/order.jsx';
 import stubState from '../../../stubs/stubState.js';
 
 describe('<OrderList />', () => {

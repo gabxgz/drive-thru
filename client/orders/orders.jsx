@@ -1,5 +1,5 @@
 import React from 'react';
-import NewOrderButton from './components/newOrderButton.jsx';
+import Button from '../button/button.jsx';
 import OrderListContainer from './components/orderListContainer.jsx';
 
 export default class Orders extends React.Component {
@@ -7,7 +7,7 @@ export default class Orders extends React.Component {
     return (
       <div>
         <OrderListContainer />
-        <NewOrderButton />
+        <Button text="Create Order" />
       </div>
     );
   }

@@ -1,10 +1,10 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import NewOrderButton from './newOrderButton.jsx';
+import Button from './button.jsx';
 
-describe('<NewOrderButton />', () => {
+describe('<Button />', () => {
   it('renders a button', () => {
-    const wrapper = shallow(<NewOrderButton />);
+    const wrapper = shallow(<Button />);
     expect(wrapper.find('button').length).toEqual(1);
   });
 });
