@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { shallow, render } from 'enzyme';
 import Order from './order.jsx';
 import EditOrderButton from './editOrderButton.jsx';
@@ -10,11 +11,14 @@ describe('<Order />', () => {
   let shallowWrapper;
 
   beforeEach(() => {
-    wrapper = render(<Order
-        index={1}
-        order={stubState.orders[0]}
-        onClick={jest.fn()}
-      />
+    wrapper = render(
+      <Router>
+        <Order
+          index={1}
+          order={stubState.orders[0]}
+          onClick={jest.fn()}
+        />
+      </Router>
     );
     shallowWrapper = shallow(<Order
         index={1}

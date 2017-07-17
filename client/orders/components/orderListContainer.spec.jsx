@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import stubState from '../../../stubs/stubState';
 import storeFake from '../../../stubs/storeFake';
 import { mapDispatchToProps, mapStateToProps } from './orderListContainer.jsx';
@@ -16,7 +17,9 @@ describe('<OrderListContainer />', () => {
     const store = storeFake(state);
     const wrapper = mount(
       <Provider store={store}>
-        <OrderListContainer />
+        <Router>
+          <OrderListContainer />
+        </Router>
       </Provider>
     );
 

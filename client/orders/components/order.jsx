@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EditOrderButton from './editOrderButton.jsx';
 import CompleteOrderButton from './completeOrderButton.jsx';
+import { Link } from 'react-router-dom';
 
 class Order extends React.Component {
   orderToString () {
@@ -24,9 +25,13 @@ class Order extends React.Component {
   }
 
   render() {
+    const url = `/edit/${this.props.index}`;
+
     return (
       <li onClick={this.props.onClick}>
-        <div>{this.props.index}. {this.orderToString()}</div>
+        <Link to={url}>
+          <div>{this.props.index}. {this.orderToString()}</div>
+        </Link>
         <EditOrderButton />
         <CompleteOrderButton />
       </li>
