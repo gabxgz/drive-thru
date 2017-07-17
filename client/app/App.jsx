@@ -1,5 +1,6 @@
 import React from 'react';
 import ViewContainer from './viewContainer.jsx';
+import styles from './app.css'
 
 export default class App extends React.Component {
   render() {

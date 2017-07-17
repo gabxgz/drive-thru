@@ -6,6 +6,8 @@ const HtmlWebPackPluginConfig = new HtmlWebPackPlugin({
   filename: 'index.html',
   inject: 'body',
 });
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPluginConfig = new ExtractTextPlugin("styles.css");
 
 module.exports = {
   entry: './client/index.js',
@@ -15,9 +17,28 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.jsx$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]",
+        }),
+      },
     ],
   },
-  plugins: [HtmlWebPackPluginConfig],
+  plugins: [
+    HtmlWebPackPluginConfig,
+    ExtractTextPluginConfig
+    ,
+  ],
 }
