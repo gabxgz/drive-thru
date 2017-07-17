@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-import { EDIT_ORDER, MANAGE_ORDERS } from './actions.js';
+import * as actionTypes from './actionTypes';
 
-function orders (state = [], action) {
+export function orders (state = [], action) {
   switch (action.type) {
-    case EDIT_ORDER:
+    case actionTypes.EDIT_ORDER:
       return state.map((order) => {
         if (order.id !== action.id) { return order };
 
@@ -16,29 +16,29 @@ function orders (state = [], action) {
   }
 }
 
-function activeView (state = '', action) {
+export function activeView (state = '', action) {
   switch (action.type) {
-    case EDIT_ORDER:
+    case actionTypes.EDIT_ORDER:
       return {
         viewName: "EDIT_ORDER",
         id: action.id,
       }
-    case MANAGE_ORDERS:
+    case actionTypes.MANAGE_ORDERS:
       return {
         viewName: "MANAGE_ORDERS",
-        id: action.id,
+        id: null,
       }
     default:
       return {
         viewName: "MANAGE_ORDERS",
-        id: action.id,
+        id: null,
       }
   }
 }
 
-const driveThruApp = combineReducers({
+const reducers = combineReducers({
   orders,
   activeView,
 });
 
-export default driveThruApp;
+export default reducers;

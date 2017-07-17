@@ -5,7 +5,7 @@ import Orders from '../orders/orders.jsx';
 import OrderEditor from '../orderEditor/orderEditor.jsx';
 import View from './view.jsx';
 
-const getView = (activeView) => {
+const getView = (activeView = {}) => {
   switch (activeView.viewName) {
     case "EDIT_ORDER":
       return <OrderEditor id={ activeView.id }/>;
@@ -16,23 +16,14 @@ const getView = (activeView) => {
   }
 }
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     activeView: getView(state.activeView)
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onOrderClick: id => {
-      dispatch(editOrder(id));
-    }
-  }
-}
-
 const ViewContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
+  mapStateToProps
 )(View);
 
 export default ViewContainer;

@@ -1,6 +1,6 @@
 {
   "activeView": {
-    "viewName": "ORDER_MANAGER",
+    "viewName": "EDIT_ORDER",
     "id": 1
   },
   "orderFilter": "SHOW_ACTIVE",
@@ -18,7 +18,6 @@
       "paid": false,
       "complete": false,
       "editing": false,
-
     }
   ]
 }

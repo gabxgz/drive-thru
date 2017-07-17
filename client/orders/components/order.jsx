@@ -5,13 +5,22 @@ import CompleteOrderButton from './completeOrderButton.jsx';
 
 class Order extends React.Component {
   orderToString () {
+    const { items } = this.props.order;
     let orderString = '';
 
-    this.props.order.items.map((item) =>
-      orderString += `${item} `
-    );
+    items.map((item, index) => {
+      let separator;
 
-    return orderString.trim();
+      if (index === items.length - 1) {
+        separator = '';
+      } else {
+        separator = ', ';
+      }
+
+      orderString += `${item.name}${separator}`
+    });
+
+    return orderString;
   }
 
   render() {

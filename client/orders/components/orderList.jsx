@@ -29,7 +29,7 @@ OrderList.propTypes = {
   orders: PropTypes.arrayOf(
     PropTypes.shape({
         name: PropTypes.string,
-        items: PropTypes.arrayOf(PropTypes.string).isRequired,
+        items: PropTypes.arrayOf(PropTypes.object).isRequired,
         id: PropTypes.number.isRequired,
         paid: PropTypes.bool,
         completed: PropTypes.bool,
