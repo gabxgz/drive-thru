@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import OrderList from './orderList.jsx';
 import OrderFilters from '../orderFilters.js';
-import { displayOrder } from '../../actions.js';
+import { editOrder } from '../../actions.js';
 
 const getOrders = (orders, filter = OrderFilters.SHOW_ACTIVE) => {
   switch (filter) {
@@ -22,7 +22,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onOrderClick: id => {
       console.log(id);
-      dispatch(displayOrder(id));
+      dispatch(editOrder(id));
     }
   }
 }

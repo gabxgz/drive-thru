@@ -7,6 +7,10 @@ import driveThruApp from './reducers';
 import { editOrder } from './actions';
 
 window.STATE_FROM_SERVER = {
+  "activeView": {
+    "viewName": "ORDER_MANAGER",
+    "id": null
+  },
   orders:[
     {
       name:'item 1',

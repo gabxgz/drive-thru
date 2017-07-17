@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { displayOrder } from '../actions.js';
+import { editOrder } from '../actions.js';
 import OrderManager from '../orderManager/components/orderManager.jsx';
 import OrderEditor from '../orderEditor/components/orderEditor.jsx';
 import Editor from './editor.jsx';
 
 const getView = (activeView) => {
-  switch (activeView) {
+  console.log(activeView);
+  switch (activeView.viewName) {
     case "EDIT_ORDER":
-      return <OrderEditor />;
+      return <OrderEditor id={ activeView.id }/>;
     case "MANAGE_ORDERS":
       return <OrderManager />;
     default:
@@ -17,6 +18,7 @@ const getView = (activeView) => {
 }
 
 const mapStateToProps = state => {
+  console.log(state.activeView);
   return {
     activeView: getView(state.activeView)
   }
@@ -25,8 +27,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onOrderClick: id => {
-      console.log(id);
-      dispatch(displayOrder(id));
+      // console.log(id);
+      dispatch(editOrder(id));
     }
   }
 }
