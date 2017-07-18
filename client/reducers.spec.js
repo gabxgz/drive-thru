@@ -79,15 +79,22 @@ describe('reducers', () => {
 
     it('handles REMOVE_MENU_ITEM', () => {
       const orderId = 1;
-      const menuItem =
+      const menuItem =  {
+        "id": 1,
+        "name": "Burger",
+        "icon": "burger.jpg",
+        "price": 3.5,
+      };
       const initialState = [{
         "id": 1,
-        "editing": false,
+        items: [
+          menuItem
+        ]
       }];
 
       const expectedState =  [{
         "id": 1,
-        "editing": true,
+        items: []
       }];
 
       expect(orders(initialState, actions.removeMenuItem(orderId, menuItem))).toEqual(expectedState);

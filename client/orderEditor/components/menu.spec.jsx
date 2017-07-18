@@ -16,15 +16,15 @@ describe('<Menu />', () => {
         <Menu />
       );
 
-    ulEl = wrapper.find(Menu);
+    ulEl = wrapper.find('ul');
     liEls = ulEl.find('li');
   });
 
-  it.skip('renders a <ul>', () => {
+  it('renders a <ul>', () => {
     expect(ulEl).toHaveLength(1);
   });
 
-  it.skip('renders <li>s for each menu item', () => {
+  it('renders <li>s for each menu item', () => {
     expect(liEls).toHaveLength(stubState.orders[0].items.length);
   });
 });
