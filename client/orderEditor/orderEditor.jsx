@@ -9,15 +9,14 @@ export default class OrderEditor extends React.Component {
   renderItems(order) {
     this.total = 0;
 
-    console.log(this.props.onItemRemove)
-
     return order.items.map((item, index) => {
       this.total += item.price;
       return <li
+        className={styles.orderedItems}
         key={keyGenerator() + index}
         onClick={() => {this.props.onItemRemove(order.id, item)}}>
           {item.name}
-          <span>Click to Remove</span>
+          <div className={styles.close}>X</div>
       </li>
     });
   }

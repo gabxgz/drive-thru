@@ -13,7 +13,6 @@ export const mapStateToProps = (state, props) => {
 export const mapDispatchToProps = (dispatch) => {
   return {
     onItemRemove: (orderId, menuItem) => {
-      console.log('dispath');
       dispatch(removeMenuItem(orderId, menuItem));
     }
   };

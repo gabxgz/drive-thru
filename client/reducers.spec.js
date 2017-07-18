@@ -22,10 +22,6 @@ describe('reducers', () => {
       expect(orders(initialState, actions.editOrder(1))).toEqual(expectedState);
     });
 
-    it('handles CREATE_ORDER', () => {
-      expect();
-    });
-
     it('handles ADD_MENU_ITEM', () => {
       const initialState = [{
         items: [
@@ -79,6 +75,22 @@ describe('reducers', () => {
       }];
 
       expect(orders(initialState, actions.addMenuItem));
+    });
+
+    it('handles REMOVE_MENU_ITEM', () => {
+      const orderId = 1;
+      const menuItem =
+      const initialState = [{
+        "id": 1,
+        "editing": false,
+      }];
+
+      const expectedState =  [{
+        "id": 1,
+        "editing": true,
+      }];
+
+      expect(orders(initialState, actions.removeMenuItem(orderId, menuItem))).toEqual(expectedState);
     });
   });
 

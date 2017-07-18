@@ -59,7 +59,7 @@ export function orders (state = [], action) {
       });
 
       newItems = state[orderIndex].items.slice(0).filter((item, index) => {
-        return index !== orderIndex;
+        return item !== action.menuItem;
       });
 
       newOrder = Object.assign({}, state[orderIndex], { items: newItems });

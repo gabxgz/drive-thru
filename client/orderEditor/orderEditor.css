@@ -4,3 +4,7 @@
   background-color: #157a9e;
   float: left;
 }
+
+.close {
+  float: right;
+}

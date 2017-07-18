@@ -7,9 +7,7 @@ import reducers from './reducers';
 import { editOrder } from './actions';
 import stubState from '../stubs/stubState';
 
-window.STATE_FROM_SERVER = stubState;
-
-let store = createStore(reducers, window.STATE_FROM_SERVER);
+let store = createStore(reducers, {});
 
 ReactDOM.render(
   <Provider store={store}>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../button/button.jsx';
 import OrderListContainer from './components/orderListContainer.jsx';
+import styles from './orders.css';
 
 export default class Orders extends React.Component {
   render() {
@@ -8,7 +9,7 @@ export default class Orders extends React.Component {
     let managerAlert = null;
 
     if (this.props.orderTotal > 4) {
-      managerAlert = <div>Manager Alerted</div>;
+      managerAlert = <div className={styles.managerAlert}>Manager Alerted</div>;
     }
 
     return (

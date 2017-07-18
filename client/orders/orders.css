@@ -1,0 +1,8 @@
+.managerAlert {
+  background: #FF0000;
+  text-align: center;
+  color: #FFFFFF;
+  font-weight: bold;
+  height: 2em;
+  line-height: 2em;
+}

@@ -22,7 +22,6 @@ export default class Menu extends React.Component {
   }
 
   renderMenuItems(menuItems) {
-    console.log(this.props);
     return menuItems.map((menuItem) =>
       <li
         key={keyGenerator() + menuItem.id}
