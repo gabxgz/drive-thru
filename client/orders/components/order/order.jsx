@@ -28,11 +28,11 @@ class Order extends React.Component {
     const url = `/edit/${this.props.index}`;
 
     return (
-      <li onClick={this.props.onClick}>
-        <Link to={url}>
-          <div className={styles.order}>{this.props.index}. {this.orderToString()}</div>
-        </Link>
-        <Button text="Accept Payment" />
+      <li>
+        <div className={styles.order}>{this.props.index}. {this.orderToString()}</div>
+        <Button text="Complete" />
+        <Button cb={() => {this.props.onOrderCancel(this.props.order.id)}} text="Cancel" />
+        <Button url={url} text="Edit" />
       </li>
     );
   }
@@ -41,7 +41,6 @@ class Order extends React.Component {
 Order.propTypes = {
   index: PropTypes.number.isRequired,
   order: PropTypes.object.isRequired,
-  onClick: PropTypes.func.isRequired,
 }
 
 export default Order;

@@ -21,6 +21,13 @@ export function orders (state = [], action) {
         editing: false,
       }]);
 
+    case actionTypes.CANCEL_ORDER:
+      const clonedState = state.slice(0);
+      const orderRemovedState = clonedState.filter((order, index) => {
+        return order.id !== action.orderId;
+      });
+      return orderRemovedState;
+
     case actionTypes.ADD_MENU_ITEM:
       let orderIndex = state.findIndex((order) => {
         return order.id == action.orderId;

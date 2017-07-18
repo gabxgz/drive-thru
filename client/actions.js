@@ -28,3 +28,10 @@ export function removeMenuItem(orderId, menuItem) {
     orderId,
   };
 }
+
+export function cancelOrder(orderId) {
+  return {
+    type: actionTypes.CANCEL_ORDER,
+    orderId,
+  };
+}

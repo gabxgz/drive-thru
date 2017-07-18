@@ -16,7 +16,7 @@ export const mapDispatchToProps = dispatch => {
   return {
     onOrderClick: id => {
       dispatch(editOrder(id));
-    }
+    },
   }
 }
 

@@ -5,18 +5,13 @@ ul {
 li {
   display: block;
   box-sizing: border-box;
-  height: 100px;
+  height: auto;
   background-color: #FFFFFF;
   margin-bottom: 10px;
   font-size: 2em;
   padding: 10px;
-  box-shadow: 3px 3px rgba(0, 0, 0, 0.1);
   position: relative;
-}
-
-li:hover {
-  transform: scale(1.01);
-  box-shadow: 3px 3px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 a {
@@ -39,7 +34,6 @@ a:hover {
 
 li button {
   font-size: 1rem;
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
+  float: right;
+  margin-left: 10px;
 }
