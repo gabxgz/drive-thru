@@ -97,7 +97,11 @@ describe('reducers', () => {
 
   describe('#total', () => {
     it("returns 0.00 as initial total", () => {
-      expect(total(undefined, {})).toEqual('0.00');
+      const menuItem = {
+        price: 0,
+      };
+
+      expect(total(undefined, actions.addMenuItem(1, menuItem))).toEqual('0.00');
     });
 
     it("handles ADD_MENU_ITEM", () => {
@@ -107,7 +111,7 @@ describe('reducers', () => {
         price: 1,
       };
 
-      expect(total(initialState, actions.addMenuItem(menuItem))).toEqual(expectedState);
+      expect(total(initialState, actions.addMenuItem(1, menuItem))).toEqual(expectedState);
     });
   });
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import OrderList from './orderList.jsx';
-import Order from './order/order.jsx';
+import OrderContainer from './order/orderContainer.jsx';
 import stubState from '../../../stubs/stubState.js';
 
 describe('<OrderList />', () => {
@@ -19,7 +19,7 @@ describe('<OrderList />', () => {
     );
 
     ul = wrapper.find('ul');
-    orders = ul.find(Order);
+    orders = ul.find(OrderContainer);
     order = orders.nodes[0];
   });
 
@@ -32,10 +32,6 @@ describe('<OrderList />', () => {
   });
 
   describe('when rendering Order', () => {
-    it('passes id to Order as key', () => {
-      expect(order.key).toEqual("1");
-    });
-
     it('passes index to Order as current index + 1', () => {
       expect(order.props.index).toEqual(1);
     });
@@ -46,11 +42,6 @@ describe('<OrderList />', () => {
 
     it('passes order data to Order', () => {
       expect(order.props.order).toEqual(stubState.orders[0]);
-    });
-
-    it('passes onOrderClick to onClick', () => {
-      order.props.onClick();
-      expect(onClickStub).toHaveBeenCalledWith(1);
     });
   });
 });

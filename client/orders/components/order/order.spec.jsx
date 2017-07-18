@@ -31,9 +31,18 @@ describe('<Order />', () => {
     expect(wrapper.html()).toContain("1. Burger, Drink, Side");
   });
 
-  it('renders an Accept Payment Button', () => {
+  it('renders a Complete Button', () => {
     const button = shallowWrapper.find(Button);
-    expect(button.length).toEqual(1);
-    expect(button.nodes[0].props.text).toEqual('Accept Payment');
+    expect(button.nodes[0].props.text).toEqual('Complete');
+  });
+
+  it('renders a Cancel Button', () => {
+    const button = shallowWrapper.find(Button);
+    expect(button.nodes[1].props.text).toEqual('Cancel');
+  });
+
+  it('renders an Edit Button', () => {
+    const button = shallowWrapper.find(Button);
+    expect(button.nodes[2].props.text).toEqual('Edit');
   });
 });

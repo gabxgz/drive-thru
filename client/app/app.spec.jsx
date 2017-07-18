@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import App from './app.jsx';
 import OrdersContainer from '../orders/ordersContainer.jsx';
-import OrderEditor from '../orderEditor/orderEditor.jsx';
+import OrderEditorContainer from '../orderEditor/orderEditorContainer.jsx';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 describe('<App />', () => {
@@ -45,7 +45,7 @@ describe('<App />', () => {
       it('points to Orders', () => {
         expect(routes.nodes[1].props).toEqual({
           path: '/edit/:id',
-          component: OrderEditor
+          component: OrderEditorContainer
         });
       });
     });

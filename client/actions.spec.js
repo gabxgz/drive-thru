@@ -37,7 +37,7 @@ describe('actions', () => {
   });
 
   describe('#addMenuItem', () => {
-    it('returns action to add menu item', () => {
+    it('returns ADD_MENU_ITEM action', () => {
       const menuItem = {
         "id": 1,
         "name": "Burger",
@@ -47,10 +47,11 @@ describe('actions', () => {
 
       const expectedAction = {
         type: actionTypes.ADD_MENU_ITEM,
+        orderId: 1,
         menuItem,
       };
 
-      expect(actions.addMenuItem(menuItem)).toEqual(expectedAction);
+      expect(actions.addMenuItem(1, menuItem)).toEqual(expectedAction);
     });
   });
 });
