@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import OrderEditor from './orderEditor.jsx';
+import { removeMenuItem } from '../actions.js';
 
 export const mapStateToProps = (state, props) => {
   return {
@@ -9,8 +10,18 @@ export const mapStateToProps = (state, props) => {
   };
 }
 
+export const mapDispatchToProps = (dispatch) => {
+  return {
+    onItemRemove: (orderId, menuItem) => {
+      console.log('dispath');
+      dispatch(removeMenuItem(orderId, menuItem));
+    }
+  };
+}
+
 const OrderEditorContainer = connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(OrderEditor);
 
 export default OrderEditorContainer;

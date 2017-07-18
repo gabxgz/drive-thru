@@ -20,3 +20,11 @@ export function addMenuItem(orderId, menuItem) {
     orderId,
   };
 }
+
+export function removeMenuItem(orderId, menuItem) {
+  return {
+    type: actionTypes.REMOVE_MENU_ITEM,
+    menuItem,
+    orderId,
+  };
+}

@@ -11,6 +11,7 @@ export function orders (state = [], action) {
           editing: !order.editing,
         });
       });
+
     case actionTypes.CREATE_ORDER:
       return state.concat([{
         items: [],
@@ -19,15 +20,31 @@ export function orders (state = [], action) {
         completed: false,
         editing: false,
       }]);
+
     case actionTypes.ADD_MENU_ITEM:
-      const orderIndex = state.findIndex((order) => {
+      let orderIndex = state.findIndex((order) => {
         return order.id == action.orderId;
       });
-      const newItems = state[orderIndex].items.slice(0)
+      let newItems = state[orderIndex].items.slice(0)
       newItems.push(action.menuItem);
 
-      const newOrder = Object.assign({}, state[orderIndex], { items: newItems });
-      const newState = state.slice(0)
+      let newOrder = Object.assign({}, state[orderIndex], { items: newItems });
+      let newState = state.slice(0)
+      newState[orderIndex] = newOrder;
+
+      return newState;
+
+    case actionTypes.REMOVE_MENU_ITEM:
+      orderIndex = state.findIndex((order) => {
+        return order.id == action.orderId;
+      });
+
+      newItems = state[orderIndex].items.slice(0).filter((item, index) => {
+        return index !== orderIndex;
+      });
+
+      newOrder = Object.assign({}, state[orderIndex], { items: newItems });
+      newState = state.slice(0);
       newState[orderIndex] = newOrder;
 
       return newState;
