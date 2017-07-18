@@ -3,7 +3,6 @@ import Orders from './orders.jsx';
 import { createOrder } from '../actions.js';
 
 export const mapStateToProps = state => {
-  console.log({state});
   return {
     nextOrder: state.nextOrder
   }

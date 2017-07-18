@@ -1,0 +1,6 @@
+.currentOrder {
+  min-width: 100px;
+  width: 25%;
+  background-color: #157a9e;
+  float: left;
+}

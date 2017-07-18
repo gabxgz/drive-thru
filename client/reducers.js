@@ -18,33 +18,25 @@ export function orders (state = [], action) {
         paid: false,
         completed: false,
         editing: false,
-      }])
+      }]);
+    case actionTypes.ADD_MENU_ITEM:
+      const orderIndex = state.findIndex((order) => {
+        return order.id == action.orderId;
+      });
+      const newItems = state[orderIndex].items.slice(0)
+      newItems.push(action.menuItem);
+
+      const newOrder = Object.assign({}, state[orderIndex], { items: newItems });
+      const newState = state.slice(0)
+      newState[orderIndex] = newOrder;
+
+      return newState;
     default:
       return state;
   }
 }
 
-export function activeView (state = '', action) {
-  switch (action.type) {
-    case actionTypes.EDIT_ORDER:
-      return {
-        viewName: "EDIT_ORDER",
-        id: action.id,
-      }
-    case actionTypes.MANAGE_ORDERS:
-      return {
-        viewName: "MANAGE_ORDERS",
-        id: null,
-      }
-    default:
-      return {
-        viewName: "MANAGE_ORDERS",
-        id: null,
-      }
-  }
-}
-
-export function nextOrder (state=1, action) {
+export function nextOrder (state = 1, action) {
   switch (action.type) {
     case actionTypes.CREATE_ORDER:
       return state + 1;
@@ -53,10 +45,24 @@ export function nextOrder (state=1, action) {
   }
 }
 
+export function total (state = "0.00", action) {
+  switch (action.type) {
+    case actionTypes.ADD_MENU_ITEM:
+      if (action.menuItem.price) {
+        const initialTotal = parseFloat(state, 10);
+        const newTotal = initialTotal + action.menuItem.price;
+        return newTotal.toFixed(2);
+      }
+      return state;
+    default:
+      return state;
+  }
+}
+
 const reducers = combineReducers({
   orders,
-  activeView,
   nextOrder,
+  total,
 });
 
 export default reducers;

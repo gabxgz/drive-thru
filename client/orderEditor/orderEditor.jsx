@@ -1,17 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './orderEditor.css';
+import MenuContainer from './components/menuContainer.jsx';
+import { keyGenerator } from '../utils/keyGenerator.js';
 
 export default class OrderEditor extends React.Component {
-  render() {
-    const orders = this.context.store.getState().orders;
-    const order = orders.find((order) => {
-      return order.id == this.props.match.params.id;
-    });
+  renderItems(order) {
+    this.total = 0;
 
+    return order.items.map((item, index) => {
+      this.total += item.price;
+      return <li key={keyGenerator() + index}>{item.name}</li>
+    });
+  }
+
+  render() {
     return (
       <div>
-        Editing Order: {this.props.match.params.id}
-        <ul></ul>
+        <ul className={styles.currentOrder}>
+          {this.renderItems(this.props.order)}
+          <span>Total = {this.total.toFixed(2)}</span>
+        </ul>
+        <MenuContainer orderId={this.props.order.id} />
       </div>
     );
   }

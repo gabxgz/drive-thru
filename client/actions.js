@@ -12,3 +12,11 @@ export function manageOrders() {
 export function createOrder(id) {
   return { type: actionTypes.CREATE_ORDER, id: id };
 }
+
+export function addMenuItem(orderId, menuItem) {
+  return {
+    type: actionTypes.ADD_MENU_ITEM,
+    menuItem,
+    orderId,
+  };
+}

@@ -1,0 +1,15 @@
+.menu {
+  width: 75%;
+  float: right;
+}
+
+.menuItem {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.menuItem img {
+  display: block;
+  margin: 0 auto;
+}

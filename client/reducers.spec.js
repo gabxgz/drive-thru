@@ -1,4 +1,4 @@
-import { orders, activeView } from './reducers'
+import { orders, nextOrder, total } from './reducers'
 import * as actionTypes from './actionTypes';
 import * as actions from './actions.js';
 
@@ -21,42 +21,93 @@ describe('reducers', () => {
 
       expect(orders(initialState, actions.editOrder(1))).toEqual(expectedState);
     });
+
+    it('handles CREATE_ORDER', () => {
+      expect();
+    });
+
+    it('handles ADD_MENU_ITEM', () => {
+      const initialState = [{
+        items: [
+          {
+            "id": 1,
+            "name": "Burger",
+            "icon": "burger.jpg",
+            "price": 3.5,
+          },
+        ],
+        total: '3.50',
+        id: 1,
+        paid: false,
+        completed: false,
+        editing: false,
+      }];
+
+      const expectedState =[{
+        items: [
+          {
+            "id": 1,
+            "name": "Burger",
+            "icon": "burger.jpg",
+            "price": 3.5,
+          },
+        ],
+        total: '3.50',
+        id: 1,
+        paid: false,
+        completed: false,
+        editing: false,
+      },{
+        items: [
+          {
+            "id": 1,
+            "name": "Burger",
+            "icon": "burger.jpg",
+            "price": 3.5,
+          }, {
+            "id": 2,
+            "name": "Side",
+            "icon": "side.jpg",
+            "price": 2,
+          },
+        ],
+        total: "5.50",
+        id: 2,
+        paid: false,
+        completed: false,
+        editing: false,
+      }];
+
+      expect(orders(initialState, actions.addMenuItem));
+    });
   });
 
-  describe('#activeView', () => {
-    it('returns MANAGE_ORDERS as initial activeView state', () => {
-      expect(activeView(undefined, {})).toEqual({
-        id: null,
-        viewName: "MANAGE_ORDERS"
-      });
+  describe('#nextOrder', () => {
+    it('returns 1 as initial orders state', () => {
+      expect(nextOrder(undefined, {})).toEqual(1);
     });
 
-    it('handles EDIT_ORDER', () => {
-      const initialState = {
-        id: null,
-        viewName: "MANAGE_ORDERS"
-      };
+    it('handles CREATE_ORDER', () => {
+      const initialState = 350;
+      const expectedState = 351;
 
-      const expectedState =  {
-        id: 1,
-        viewName: "EDIT_ORDER"
-      };
+      expect(nextOrder(initialState, actions.createOrder(350))).toEqual(expectedState);
+    });
+  });
 
-      expect(activeView(initialState, actions.editOrder(1))).toEqual(expectedState);
+  describe('#total', () => {
+    it("returns 0.00 as initial total", () => {
+      expect(total(undefined, {})).toEqual('0.00');
     });
 
-    it('handles MANAGE_ORDERS', () => {
-      const initialState =  {
-        id: 1,
-        viewName: "EDIT_ORDER"
+    it("handles ADD_MENU_ITEM", () => {
+      const initialState = "3.50";
+      const expectedState = "4.50";
+      const menuItem = {
+        price: 1,
       };
 
-      const expectedState = {
-        id: null,
-        viewName: "MANAGE_ORDERS"
-      };
-
-      expect(activeView(initialState, actions.manageOrders())).toEqual(expectedState);
+      expect(total(initialState, actions.addMenuItem(menuItem))).toEqual(expectedState);
     });
   });
 });

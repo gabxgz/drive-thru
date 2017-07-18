@@ -1,12 +1,7 @@
 const stubState = {
-  activeView: {
-    "viewName": "ORDER_MANAGER",
-    "id": null
-  },
   nextOrder: 4,
   orders:[
     {
-      name:'item 1',
       items: [
         {
           "id": 1,
@@ -14,23 +9,23 @@ const stubState = {
           "icon": "burger.jpg",
           "price": 3.5,
         }, {
-          "id": 1,
+          "id": 2,
           "name": "Drink",
           "icon": "drink.jpg",
           "price": 1,
         }, {
-          "id": 1,
+          "id": 3,
           "name": "Side",
           "icon": "side.jpg",
           "price": 2,
         },
       ],
+      total: '6.50',
       id: 1,
       paid: false,
       completed: false,
       editing: false,
     }, {
-      name:'item 2',
       items: [
         {
           "id": 1,
@@ -38,18 +33,18 @@ const stubState = {
           "icon": "burger.jpg",
           "price": 3.5,
         }, {
-          "id": 1,
+          "id": 2,
           "name": "Side",
           "icon": "side.jpg",
           "price": 2,
         },
       ],
+      total: "5.50",
       id: 2,
       paid: false,
       completed: false,
       editing: false,
     }, {
-      name:'item 3',
       items: [
         {
           "id": 1,
@@ -58,12 +53,13 @@ const stubState = {
           "price": 2,
         },
       ],
+      total: "2",
       id: 3,
       paid: false,
       completed: false,
       editing: false,
     },
-  ]
+  ],
 };
 
 export default stubState;
