@@ -11,3 +11,10 @@ yarn install
 ```
 yarn start
 ```
+
+### Tests
+
+```
+yarn test
+```
+
