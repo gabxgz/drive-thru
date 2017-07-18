@@ -5,8 +5,15 @@ import OrderListContainer from './components/orderListContainer.jsx';
 export default class Orders extends React.Component {
   render() {
     const url = `/edit/${this.props.nextOrder}`;
+    let managerAlert = null;
+
+    if (this.props.orderTotal > 4) {
+      managerAlert = <div>Manager Alerted</div>;
+    }
+
     return (
       <div>
+        {managerAlert}
         <OrderListContainer />
         <Button
           text="Create Order"
