@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Order from './order.jsx';
-import { cancelOrder } from '../../../actions.js';
+import { cancelOrder , completeOrder } from '../../../actions.js';
 
 export const mapStateToProps = (state, props) => {
   return {
@@ -14,6 +14,9 @@ export const mapDispatchToProps = dispatch => {
     onOrderCancel: id => {
       dispatch(cancelOrder(id));
     },
+    onOrderComplete: id => {
+      dispatch(completeOrder(id));
+    }
   }
 }
 

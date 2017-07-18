@@ -4,3 +4,4 @@ export const CREATE_ORDER = 'CREATE_ORDER';
 export const ADD_MENU_ITEM = 'ADD_MENU_ITEM';
 export const REMOVE_MENU_ITEM = 'REMOVE_MENU_ITEM';
 export const CANCEL_ORDER = 'CANCEL_ORDER';
+export const COMPLETE_ORDER = 'COMPLETE_ORDER';

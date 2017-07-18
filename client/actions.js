@@ -35,3 +35,10 @@ export function cancelOrder(orderId) {
     orderId,
   };
 }
+
+export function completeOrder(orderId) {
+  return {
+    type: actionTypes.COMPLETE_ORDER,
+    orderId,
+  };
+}

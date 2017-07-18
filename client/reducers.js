@@ -28,6 +28,18 @@ export function orders (state = [], action) {
       });
       return orderRemovedState;
 
+    case actionTypes.COMPLETE_ORDER:
+      const completedOrderIndex = state.findIndex((order) => {
+        return order.id === action.orderId;
+      });
+
+      const newCompletedOrder = Object.assign({}, state[completedOrderIndex], {
+        completed: true,
+      });
+      const completedOrderState = state.slice(0);
+      completedOrderState[completedOrderIndex] = newCompletedOrder;
+      return completedOrderState;
+
     case actionTypes.ADD_MENU_ITEM:
       let orderIndex = state.findIndex((order) => {
         return order.id == action.orderId;

@@ -29,9 +29,17 @@ class Order extends React.Component {
 
     return (
       <li>
-        <div className={styles.order}>{this.props.index}. {this.orderToString()}</div>
-        <Button text="Complete" />
-        <Button cb={() => {this.props.onOrderCancel(this.props.order.id)}} text="Cancel" />
+        <div className={styles.order}>
+           {this.props.index}. {this.orderToString()}
+        </div>
+        <Button
+          cb={() => {this.props.onOrderComplete(this.props.order.id)}}
+          text="Complete"
+        />
+        <Button
+          cb={() => {this.props.onOrderCancel(this.props.order.id)}}
+          text="Cancel"
+        />
         <Button url={url} text="Edit" />
       </li>
     );
