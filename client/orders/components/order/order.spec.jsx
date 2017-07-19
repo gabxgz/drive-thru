@@ -13,14 +13,14 @@ describe('<Order />', () => {
     wrapper = render(
       <Router>
         <Order
-          index={1}
+          index={5}
           order={stubState.orders[0]}
           onClick={jest.fn()}
         />
       </Router>
     );
     shallowWrapper = shallow(<Order
-        index={1}
+        index={5}
         order={stubState.orders[0]}
         onClick={jest.fn()}
       />
@@ -44,5 +44,14 @@ describe('<Order />', () => {
   it('renders an Edit Button', () => {
     const button = shallowWrapper.find(Button);
     expect(button.nodes[2].props.text).toEqual('Edit');
+  });
+
+  describe.only('edit link', () => {
+    it('contains order id', () => {
+      const linkEl = wrapper.find('a');
+      const orderId = stubState.orders[0].id;
+
+      expect(linkEl[0].attribs.href).toEqual(`/edit/${orderId}`);
+    });
   });
 });

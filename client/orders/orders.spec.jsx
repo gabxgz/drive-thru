@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Orders from './orders.jsx';
-import OrderListContainer from './components/orderListContainer.jsx';
+import OrderListContainer from './components/orderListContainer/orderListContainer.jsx';
 import Button from '../button/button.jsx';
 import stubState from '../../stubs/stubState.js';
 

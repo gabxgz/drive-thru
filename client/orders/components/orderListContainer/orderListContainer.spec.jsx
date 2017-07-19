@@ -2,14 +2,14 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import stubState from '../../../stubs/stubState';
-import storeFake from '../../../stubs/storeFake';
+import stubState from '../../../../stubs/stubState';
+import storeFake from '../../../../stubs/storeFake';
 import { mapDispatchToProps, mapStateToProps } from './orderListContainer.jsx';
 import OrderListContainer from './orderListContainer.jsx';
-import { editOrder } from '../../actions.js';
+import { editOrder } from '../../../actions.js';
 import OrderList from './orderList.jsx';
-import Orders from '../../orders/orders.jsx';
-import OrderEditor from '../../orderEditor/orderEditor.jsx';
+import Orders from '../../../orders/orders.jsx';
+import OrderEditor from '../../../orderEditor/orderEditor.jsx';
 
 describe('<OrderListContainer />', () => {
   it('is connected to OrderList', () => {

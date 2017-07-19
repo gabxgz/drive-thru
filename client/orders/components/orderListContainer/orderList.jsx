@@ -1,7 +1,7 @@
 import React from 'react';
-import OrderContainer from './order/orderContainer.jsx';
+import OrderContainer from '../order/orderContainer.jsx';
 import PropTypes from 'prop-types';
-import { keyGenerator } from '../../utils/keyGenerator.js';
+import { keyGenerator } from '../../../utils/keyGenerator.js';
 
 class OrderList extends React.Component {
   renderOrders(orderList) {
