@@ -41,17 +41,28 @@ export function orders (state = [], action) {
       return completedOrderState;
 
     case actionTypes.ADD_MENU_ITEM:
-      let orderIndex = state.findIndex((order) => {
-        return order.id == action.orderId;
-      });
-      let newItems = state[orderIndex].items.slice(0)
-      newItems.push(action.menuItem);
+      const findOrderIndex = () => {
+        return state.findIndex((order) => {
+          return order.id == action.orderId;
+        });
+      };
 
-      let newOrder = Object.assign({}, state[orderIndex], { items: newItems });
-      let newState = state.slice(0)
-      newState[orderIndex] = newOrder;
+      const getUpdatedItems = (order) => {
+        const clonedArr = order.items.slice(0);
+        const menuItem = Object.assign({}, action.menuItem);
+        clonedArr.push(menuItem);
+        return clonedArr;
+      };
 
-      return newState;
+      let orderIndex = findOrderIndex();
+      let order = state[orderIndex];
+      let newItems = getUpdatedItems(order);
+      let newOrder = Object.assign({}, order, { items: newItems });
+      let addMenuItemState = state.slice(0);
+
+      addMenuItemState[orderIndex] = newOrder;
+
+      return addMenuItemState;
 
     case actionTypes.REMOVE_MENU_ITEM:
       orderIndex = state.findIndex((order) => {
@@ -63,10 +74,10 @@ export function orders (state = [], action) {
       });
 
       newOrder = Object.assign({}, state[orderIndex], { items: newItems });
-      newState = state.slice(0);
-      newState[orderIndex] = newOrder;
+      const removeMenuItemState = state.slice(0);
+      removeMenuItemState[orderIndex] = newOrder;
 
-      return newState;
+      return removeMenuItemState;
     default:
       return state;
   }

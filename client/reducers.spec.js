@@ -22,59 +22,66 @@ describe('reducers', () => {
       expect(orders(initialState, actions.editOrder(1))).toEqual(expectedState);
     });
 
-    it('handles ADD_MENU_ITEM', () => {
-      const initialState = [{
-        items: [
-          {
-            "id": 1,
-            "name": "Burger",
-            "icon": "burger.jpg",
-            "price": 3.5,
-          },
-        ],
-        total: '3.50',
-        id: 1,
-        paid: false,
-        completed: false,
-        editing: false,
-      }];
+    describe('when handling ADD_MENU_ITEM', () => {
+      let initialState;
+      let expectedState;
+      let orderId;
+      let menuItem;
 
-      const expectedState =[{
-        items: [
-          {
-            "id": 1,
-            "name": "Burger",
-            "icon": "burger.jpg",
-            "price": 3.5,
-          },
-        ],
-        total: '3.50',
-        id: 1,
-        paid: false,
-        completed: false,
-        editing: false,
-      },{
-        items: [
-          {
-            "id": 1,
-            "name": "Burger",
-            "icon": "burger.jpg",
-            "price": 3.5,
-          }, {
-            "id": 2,
-            "name": "Side",
-            "icon": "side.jpg",
-            "price": 2,
-          },
-        ],
-        total: "5.50",
-        id: 2,
-        paid: false,
-        completed: false,
-        editing: false,
-      }];
+      beforeEach(() => {
+        orderId = 1;
+        menuItem = {
+          "id": 2,
+          "name": "Side",
+          "icon": "side.jpg",
+          "price": 2,
+        };
+        initialState = [{
+          items: [
+            {
+              "id": 1,
+              "name": "Burger",
+              "icon": "burger.jpg",
+              "price": 3.5,
+            },
+          ],
+          total: '3.50',
+          id: orderId,
+          paid: false,
+          completed: false,
+          editing: false,
+        }];
+      });
 
-      expect(orders(initialState, actions.addMenuItem));
+      it('adds an item', () => {
+        const expectedState = [{
+          items: [
+            {
+              "id": 1,
+              "name": "Burger",
+              "icon": "burger.jpg",
+              "price": 3.5,
+            },
+             menuItem,
+          ],
+          total: '3.50',
+          id: 1,
+          paid: false,
+          completed: false,
+          editing: false,
+        }];
+
+        expect(orders(initialState, actions.addMenuItem(orderId, menuItem))).toEqual(expectedState);
+      });
+
+      it('items are unique', function() {
+        const action = actions.addMenuItem(orderId, menuItem);
+
+        const state1 = orders(initialState, action);
+        const state2 = orders(state1, action);
+
+        expect(state2[0].items[1]).not.toBe(state2[0].items[2]);
+      });
     });
 
     it('handles REMOVE_MENU_ITEM', () => {
