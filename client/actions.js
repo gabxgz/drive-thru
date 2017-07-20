@@ -2,11 +2,16 @@ import * as actionTypes from './actionTypes';
 
 // Creators
 export function editOrder(id) {
-  return { type: actionTypes.EDIT_ORDER, id: id };
+  return {
+    type: actionTypes.EDIT_ORDER,
+    id: id
+  };
 }
 
 export function manageOrders() {
-  return { type: actionTypes.MANAGE_ORDERS };
+  return {
+    type: actionTypes.MANAGE_ORDERS
+  };
 }
 
 export function createOrder(id) {
@@ -48,7 +53,7 @@ export function completeOrder(orderId) {
 
 export function buildMenu(menuItem) {
   return {
-    type: actionTypes.buildMenu,
+    type: actionTypes.BUILD_MENU,
     menuItem,
   };
 }

@@ -1,4 +1,4 @@
-import { orders, total } from './reducers'
+import { orders, total, menu } from './reducers'
 import * as actionTypes from './actionTypes';
 import * as actions from './actions.js';
 
@@ -27,21 +27,18 @@ describe('reducers', () => {
       let expectedState;
       let orderId;
       let menuItem;
+      let result;
 
       beforeEach(() => {
         orderId = 1;
         menuItem = {
-          "id": 2,
           "name": "Side",
-          "icon": "side.jpg",
           "price": 2,
         };
         initialState = [{
           items: [
             {
-              "id": 1,
               "name": "Burger",
-              "icon": "burger.jpg",
               "price": 3.5,
             },
           ],
@@ -51,28 +48,14 @@ describe('reducers', () => {
           completed: false,
           editing: false,
         }];
+
+        result = orders(initialState, actions.addMenuItem(orderId, menuItem))
       });
 
       it('adds an item', () => {
-        const expectedState = [{
-          items: [
-            {
-              "id": 1,
-              "name": "Burger",
-              "icon": "burger.jpg",
-              "price": 3.5,
-            },
-             menuItem,
-          ],
-          total: '3.50',
-          id: 1,
-          paid: false,
-          completed: false,
-          editing: false,
-        }];
-
-        expect(orders(initialState, actions.addMenuItem(orderId, menuItem))).toEqual(expectedState);
+        expect(result[0].items.length).toEqual(2);
       });
+
 
       it('items are unique', function() {
         const action = actions.addMenuItem(orderId, menuItem);
@@ -80,7 +63,7 @@ describe('reducers', () => {
         const state1 = orders(initialState, action);
         const state2 = orders(state1, action);
 
-        expect(state2[0].items[1]).not.toBe(state2[0].items[2]);
+        expect(state2[0].items[1]).not.toEqual(state2[0].items[2]);
       });
     });
 
@@ -125,6 +108,27 @@ describe('reducers', () => {
       };
 
       expect(total(initialState, actions.addMenuItem(1, menuItem))).toEqual(expectedState);
+    });
+  });
+
+  describe('#menu', () => {
+    let initialState;
+
+    beforeEach(() => {
+      initialState = [{name:'Food'}];
+    });
+    it('returns state unchanged by default', () => {
+      expect(menu(initialState, {type: 'invalid'})).toEqual(initialState);
+    });
+
+    describe('BUILD_MENU', () => {
+      it('adds item to state', () => {
+        const menuItem = {name: "Tacos"};
+        const expectedState = initialState.slice(0)
+        expectedState.push(menuItem)
+
+        expect(menu(initialState, actions.buildMenu(menuItem))).toEqual(expectedState);
+      });
     });
   });
 });

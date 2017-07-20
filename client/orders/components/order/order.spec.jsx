@@ -28,7 +28,7 @@ describe('<Order />', () => {
   });
 
   it('renders a order as properly formatted string', () => {
-    expect(wrapper.html()).toContain("1. Burger, Drink, Side");
+    expect(wrapper.html()).toContain("5. Burger, Drink, Side");
   });
 
   it('renders a Complete Button', () => {
@@ -46,7 +46,7 @@ describe('<Order />', () => {
     expect(button.nodes[2].props.text).toEqual('Edit');
   });
 
-  describe.only('edit link', () => {
+  describe('edit link', () => {
     it('contains order id', () => {
       const linkEl = wrapper.find('a');
       const orderId = stubState.orders[0].id;
