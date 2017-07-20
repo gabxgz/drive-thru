@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import * as actionTypes from './actionTypes';
+import keyGenerator from './utils/keyGenerator.js';
 
 export function orders (state = [], action) {
   switch (action.type) {
@@ -50,6 +51,7 @@ export function orders (state = [], action) {
       const getUpdatedItems = (order) => {
         const clonedArr = order.items.slice(0);
         const menuItem = Object.assign({}, action.menuItem);
+        menuItem.id = keyGenerator.getKey();
         clonedArr.push(menuItem);
         return clonedArr;
       };
@@ -83,15 +85,6 @@ export function orders (state = [], action) {
   }
 }
 
-export function nextOrder (state = 1, action) {
-  switch (action.type) {
-    case actionTypes.CREATE_ORDER:
-      return state + 1;
-    default:
-      return state;
-  }
-}
-
 export function total (state = "0.00", action) {
   switch (action.type) {
     case actionTypes.ADD_MENU_ITEM:
@@ -106,10 +99,22 @@ export function total (state = "0.00", action) {
   }
 }
 
+export function menu (state = [], action) {
+  switch (action.type) {
+    case actionTypes.BUILD_MENU:
+      let newMenuState = state.slice(0);
+      newMenuState.push(action.menuItem);
+
+      return newMenuState;
+    default:
+      return state;
+  }
+}
+
 const reducers = combineReducers({
   orders,
-  nextOrder,
   total,
+  menu,
 });
 
 export default reducers;

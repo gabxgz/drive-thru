@@ -1,5 +1,4 @@
 const stubState = {
-  nextOrder: 4,
   orders:[
     {
       items: [
@@ -58,6 +57,21 @@ const stubState = {
       paid: false,
       completed: false,
       editing: false,
+    },
+  ],
+  menu: [
+    {
+      "name": "Burger",
+      "icon": "burger.jpg",
+      "price": 3.5,
+    }, {
+      "name": "Drink",
+      "icon": "drink.jpg",
+      "price": 1,
+    }, {
+      "name": "Side",
+      "icon": "side.jpg",
+      "price": 2,
     },
   ],
 };

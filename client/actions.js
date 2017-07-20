@@ -10,7 +10,10 @@ export function manageOrders() {
 }
 
 export function createOrder(id) {
-  return { type: actionTypes.CREATE_ORDER, id: id };
+  return {
+    type: actionTypes.CREATE_ORDER,
+    id: id,
+  };
 }
 
 export function addMenuItem(orderId, menuItem) {
@@ -40,5 +43,12 @@ export function completeOrder(orderId) {
   return {
     type: actionTypes.COMPLETE_ORDER,
     orderId,
+  };
+}
+
+export function buildMenu(menuItem) {
+  return {
+    type: actionTypes.buildMenu,
+    menuItem,
   };
 }

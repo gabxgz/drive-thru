@@ -8,7 +8,6 @@ export const mapStateToProps = state => {
   });
 
   return {
-    nextOrder: state.nextOrder,
     orderTotal: openOrders.length,
   }
 }

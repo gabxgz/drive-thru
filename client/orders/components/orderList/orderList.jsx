@@ -7,7 +7,7 @@ class OrderList extends React.Component {
   renderOrders(orderList) {
     return orderList.map((order, index) =>
       <OrderContainer
-        key={keyGenerator.getKey()}
+        key={order.id}
         index={index + 1}
         order={order}
       />

@@ -1,4 +1,4 @@
-import { orders, nextOrder, total } from './reducers'
+import { orders, total } from './reducers'
 import * as actionTypes from './actionTypes';
 import * as actions from './actions.js';
 
@@ -105,19 +105,6 @@ describe('reducers', () => {
       }];
 
       expect(orders(initialState, actions.removeMenuItem(orderId, menuItem))).toEqual(expectedState);
-    });
-  });
-
-  describe('#nextOrder', () => {
-    it('returns 1 as initial orders state', () => {
-      expect(nextOrder(undefined, {})).toEqual(1);
-    });
-
-    it('handles CREATE_ORDER', () => {
-      const initialState = 350;
-      const expectedState = 351;
-
-      expect(nextOrder(initialState, actions.createOrder(350))).toEqual(expectedState);
     });
   });
 

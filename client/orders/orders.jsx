@@ -2,10 +2,12 @@ import React from 'react';
 import Button from '../button/button.jsx';
 import OrderListContainer from './components/orderList/orderListContainer.jsx';
 import styles from './orders.css';
+import keyGenerator from '../utils/keyGenerator'
 
 export default class Orders extends React.Component {
   render() {
-    const url = `/edit/${this.props.nextOrder}`;
+    const key = keyGenerator.getKey();
+    const url = `/edit/${key}`;
     let managerAlert = null;
 
     if (this.props.orderTotal > 4) {
@@ -19,7 +21,7 @@ export default class Orders extends React.Component {
         <Button
           text="Create Order"
           url={url}
-          cb={() => {this.props.onCreateOrder(this.props.nextOrder)}}
+          cb={() => {this.props.onCreateOrder(key)}}
           />
       </div>
     );
