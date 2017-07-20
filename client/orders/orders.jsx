@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../button/button.jsx';
-import OrderListContainer from './components/orderListContainer/orderListContainer.jsx';
+import OrderListContainer from './components/orderList/orderListContainer.jsx';
 import styles from './orders.css';
 
 export default class Orders extends React.Component {

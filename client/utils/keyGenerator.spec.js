@@ -1,23 +1,23 @@
-import { keyGenerator } from './keyGenerator'
+import keyGenerator from './keyGenerator'
+
 describe('Key Generator', () => {
-  it('returns unique keys', () => {
-    const keys = {};
-    let duplicate = false;
+  describe('#getKey', () => {
+    it('returns sequential keys', () => {
+      const keys = {};
+      let currentKey = keyGenerator.getKey();
+      let notSequential = false;
 
-    for (let i = 0; i < 1000; i++) {
-      setTimeout(() => {
-        let key = keyGenerator();
+      for (let i = 0; i < 10; i++) {
+        let key = keyGenerator.getKey()
 
-        if (keys[key]) {
-          duplicate = true;
-          keys[key] = true;
-        } else {
-          keys[key] = `false ${i}`;
+        if (key !== currentKey + 1) {
+          notSequential = true;
         }
-      }, 1);
-    }
 
+        currentKey = key;
+      }
 
-    expect(duplicate).toEqual(false);
+      expect(notSequential).toEqual(false);
+    });
   });
 });

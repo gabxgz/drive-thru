@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './orderEditor.css';
 import MenuContainer from './components/menuContainer.jsx';
-import { keyGenerator } from '../utils/keyGenerator.js';
+import keyGenerator from '../utils/keyGenerator.js';
 import Button from '../button/button.jsx';
 
 export default class OrderEditor extends React.Component {
@@ -13,7 +13,7 @@ export default class OrderEditor extends React.Component {
       this.total += item.price;
       return <li
         className={styles.orderedItems}
-        key={keyGenerator() + index}
+        key={keyGenerator.getKey()}
         onClick={() => {this.props.onItemRemove(order.id, item)}}>
           {item.name}
           <div className={styles.close}>X</div>

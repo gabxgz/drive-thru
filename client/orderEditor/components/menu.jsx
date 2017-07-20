@@ -5,7 +5,7 @@ import friesImg from '../images/fries.png';
 import drinkImg from '../images/drink.png';
 import burgerImg from '../images/burger.png';
 import styles from './menu.css';
-import { keyGenerator } from '../../utils/keyGenerator';
+import keyGenerator from '../../utils/keyGenerator';
 
 export default class Menu extends React.Component {
   getImageUrl (itemName) {
@@ -24,7 +24,7 @@ export default class Menu extends React.Component {
   renderMenuItems(menuItems) {
     return menuItems.map((menuItem) =>
       <li
-        key={keyGenerator() + menuItem.id}
+        key={keyGenerator.getKey()}
         className={styles.menuItem}
         onClick={() => {this.props.onAddMenuItem(this.props.currentOrder.id, menuItem)}}
       >
