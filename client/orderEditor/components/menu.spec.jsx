@@ -2,7 +2,6 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { shallow } from 'enzyme';
 import stubState from '../../../stubs/stubState';
-import storeFake from '../../../stubs/storeFake';
 import Menu from './menu.jsx';
 
 describe('<Menu />', () => {
@@ -11,10 +10,7 @@ describe('<Menu />', () => {
   let liEls;
 
   beforeAll(() => {
-    const store = storeFake(stubState);
-    wrapper = shallow(
-        <Menu />
-      );
+    wrapper = shallow(<Menu menu={stubState.menu}/>);
 
     ulEl = wrapper.find('ul');
     liEls = ulEl.find('li');
@@ -25,6 +21,6 @@ describe('<Menu />', () => {
   });
 
   it('renders <li>s for each menu item', () => {
-    expect(liEls).toHaveLength(stubState.orders[0].items.length);
+    expect(liEls).toHaveLength(stubState.menu.length);
   });
 });

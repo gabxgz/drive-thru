@@ -1,13 +1,13 @@
 import React from 'react';
-import OrderContainer from './order/orderContainer.jsx';
+import OrderContainer from '../order/orderContainer.jsx';
 import PropTypes from 'prop-types';
-import { keyGenerator } from '../../utils/keyGenerator.js';
+import keyGenerator from '../../../utils/keyGenerator.js';
 
 class OrderList extends React.Component {
   renderOrders(orderList) {
     return orderList.map((order, index) =>
       <OrderContainer
-        key={keyGenerator() + order.id}
+        key={order.id}
         index={index + 1}
         order={order}
       />

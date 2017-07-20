@@ -54,4 +54,22 @@ describe('actions', () => {
       expect(actions.addMenuItem(1, menuItem)).toEqual(expectedAction);
     });
   });
+
+  describe('#buildMenu', () => {
+    it('returns BUILD_MENU action', () => {
+      const menuItem = {
+        "id": 1,
+        "name": "Burger",
+        "icon": "burger.jpg",
+        "price": 3.5,
+      };
+
+      const expectedAction = {
+        type: actionTypes.BUILD_MENU,
+        menuItem,
+      };
+
+      expect(actions.buildMenu(menuItem)).toEqual(expectedAction);
+    });
+  });
 });

@@ -1,4 +1,4 @@
-import { orders, nextOrder, total } from './reducers'
+import { orders, total, menu } from './reducers'
 import * as actionTypes from './actionTypes';
 import * as actions from './actions.js';
 
@@ -22,59 +22,49 @@ describe('reducers', () => {
       expect(orders(initialState, actions.editOrder(1))).toEqual(expectedState);
     });
 
-    it('handles ADD_MENU_ITEM', () => {
-      const initialState = [{
-        items: [
-          {
-            "id": 1,
-            "name": "Burger",
-            "icon": "burger.jpg",
-            "price": 3.5,
-          },
-        ],
-        total: '3.50',
-        id: 1,
-        paid: false,
-        completed: false,
-        editing: false,
-      }];
+    describe('when handling ADD_MENU_ITEM', () => {
+      let initialState;
+      let expectedState;
+      let orderId;
+      let menuItem;
+      let result;
 
-      const expectedState =[{
-        items: [
-          {
-            "id": 1,
-            "name": "Burger",
-            "icon": "burger.jpg",
-            "price": 3.5,
-          },
-        ],
-        total: '3.50',
-        id: 1,
-        paid: false,
-        completed: false,
-        editing: false,
-      },{
-        items: [
-          {
-            "id": 1,
-            "name": "Burger",
-            "icon": "burger.jpg",
-            "price": 3.5,
-          }, {
-            "id": 2,
-            "name": "Side",
-            "icon": "side.jpg",
-            "price": 2,
-          },
-        ],
-        total: "5.50",
-        id: 2,
-        paid: false,
-        completed: false,
-        editing: false,
-      }];
+      beforeEach(() => {
+        orderId = 1;
+        menuItem = {
+          "name": "Side",
+          "price": 2,
+        };
+        initialState = [{
+          items: [
+            {
+              "name": "Burger",
+              "price": 3.5,
+            },
+          ],
+          total: '3.50',
+          id: orderId,
+          paid: false,
+          completed: false,
+          editing: false,
+        }];
 
-      expect(orders(initialState, actions.addMenuItem));
+        result = orders(initialState, actions.addMenuItem(orderId, menuItem))
+      });
+
+      it('adds an item', () => {
+        expect(result[0].items.length).toEqual(2);
+      });
+
+
+      it('items are unique', function() {
+        const action = actions.addMenuItem(orderId, menuItem);
+
+        const state1 = orders(initialState, action);
+        const state2 = orders(state1, action);
+
+        expect(state2[0].items[1]).not.toEqual(state2[0].items[2]);
+      });
     });
 
     it('handles REMOVE_MENU_ITEM', () => {
@@ -101,19 +91,6 @@ describe('reducers', () => {
     });
   });
 
-  describe('#nextOrder', () => {
-    it('returns 1 as initial orders state', () => {
-      expect(nextOrder(undefined, {})).toEqual(1);
-    });
-
-    it('handles CREATE_ORDER', () => {
-      const initialState = 350;
-      const expectedState = 351;
-
-      expect(nextOrder(initialState, actions.createOrder(350))).toEqual(expectedState);
-    });
-  });
-
   describe('#total', () => {
     it("returns 0.00 as initial total", () => {
       const menuItem = {
@@ -131,6 +108,27 @@ describe('reducers', () => {
       };
 
       expect(total(initialState, actions.addMenuItem(1, menuItem))).toEqual(expectedState);
+    });
+  });
+
+  describe('#menu', () => {
+    let initialState;
+
+    beforeEach(() => {
+      initialState = [{name:'Food'}];
+    });
+    it('returns state unchanged by default', () => {
+      expect(menu(initialState, {type: 'invalid'})).toEqual(initialState);
+    });
+
+    describe('BUILD_MENU', () => {
+      it('adds item to state', () => {
+        const menuItem = {name: "Tacos"};
+        const expectedState = initialState.slice(0)
+        expectedState.push(menuItem)
+
+        expect(menu(initialState, actions.buildMenu(menuItem))).toEqual(expectedState);
+      });
     });
   });
 });

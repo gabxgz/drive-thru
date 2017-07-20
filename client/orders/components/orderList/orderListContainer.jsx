@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import OrderList from './orderList.jsx';
-import { editOrder } from '../../actions.js';
+import { editOrder } from '../../../actions.js';
 
 const getOrders = (orders = []) => {
   return orders.filter(order => !order.completed) || [];

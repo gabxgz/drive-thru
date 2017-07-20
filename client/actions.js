@@ -2,15 +2,23 @@ import * as actionTypes from './actionTypes';
 
 // Creators
 export function editOrder(id) {
-  return { type: actionTypes.EDIT_ORDER, id: id };
+  return {
+    type: actionTypes.EDIT_ORDER,
+    id: id
+  };
 }
 
 export function manageOrders() {
-  return { type: actionTypes.MANAGE_ORDERS };
+  return {
+    type: actionTypes.MANAGE_ORDERS
+  };
 }
 
 export function createOrder(id) {
-  return { type: actionTypes.CREATE_ORDER, id: id };
+  return {
+    type: actionTypes.CREATE_ORDER,
+    id: id,
+  };
 }
 
 export function addMenuItem(orderId, menuItem) {
@@ -40,5 +48,12 @@ export function completeOrder(orderId) {
   return {
     type: actionTypes.COMPLETE_ORDER,
     orderId,
+  };
+}
+
+export function buildMenu(menuItem) {
+  return {
+    type: actionTypes.BUILD_MENU,
+    menuItem,
   };
 }

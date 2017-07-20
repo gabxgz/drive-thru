@@ -6,8 +6,18 @@ import { createStore } from 'redux';
 import reducers from './reducers';
 import { editOrder } from './actions';
 import stubState from '../stubs/stubState';
+import { menu } from './constants/menu.js';
+import keyGenerator from './utils/keyGenerator.js';
 
-let store = createStore(reducers, {});
+let key = 0;
+
+menu.map((menuItem) => {
+  menuItem.id = keyGenerator.getKey();
+});
+
+let store = createStore(reducers, {
+  menu,
+});
 
 ReactDOM.render(
   <Provider store={store}>

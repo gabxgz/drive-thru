@@ -25,7 +25,7 @@ class Order extends React.Component {
   }
 
   render() {
-    const url = `/edit/${this.props.index}`;
+    const url = `/edit/${this.props.order.id}`;
 
     return (
       <li>

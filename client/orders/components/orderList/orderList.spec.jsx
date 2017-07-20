@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import OrderList from './orderList.jsx';
-import OrderContainer from './order/orderContainer.jsx';
-import stubState from '../../../stubs/stubState.js';
+import OrderContainer from '../order/orderContainer.jsx';
+import stubState from '../../../../stubs/stubState.js';
 
 describe('<OrderList />', () => {
   let wrapper;
